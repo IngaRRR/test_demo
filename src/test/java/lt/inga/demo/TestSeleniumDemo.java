@@ -35,7 +35,6 @@ public class TestSeleniumDemo {
     @Test
     public void seleniumDemo() {
 
-
     }
 
     @Test
@@ -60,6 +59,27 @@ public class TestSeleniumDemo {
         );
     }
 
+    @Test
+    public void testEmailInput_WithValidEmail() {
+        String massageEmail = "kerinti.saule@gmail.com";
+        String expectedResult = ":kerinti.saule@gmail.com";
+        String actualResult;
+
+        WebElement inputUserEmail = driver.findElement(By.xpath("//input[@id='userEmail']"));
+        inputUserEmail.sendKeys(massageEmail);
+
+        WebElement buttonSubmit = driver.findElement(By.xpath("//button[@id='submit']")); // susirandam mygtuka
+        buttonSubmit.click();
+
+        WebElement paragraphUserEmail = driver.findElement(By.xpath("//p[@id='email']"));  // langas po submit
+        actualResult = paragraphUserEmail.getText();
+
+        Assert.assertTrue(
+                actualResult.contains(expectedResult),
+                String.format("Actual: %s; Expected: %s", actualResult, expectedResult)
+        );
+    }
+
     @AfterMethod   // uzdarymo metodas
     public void tearDown() {
 
@@ -71,4 +91,6 @@ public class TestSeleniumDemo {
         }
         driver.quit();
     }
+
+
 }
