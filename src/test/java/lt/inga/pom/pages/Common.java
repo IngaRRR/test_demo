@@ -1,6 +1,6 @@
 package lt.inga.pom.pages;
 
-import lt.inga.pom.utilities.Driver;
+import lt.inga.pom.utils.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -20,6 +20,16 @@ public class Common {
         Driver.closeDriver();
     }
 
+    public static void sleep(int millis){
+
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            Thread.currentThread().interrupt();
+        }
+
+    }
     private static WebElement getElement(By locator) {
         return Driver.getDriver().findElement(locator); // susirandam elementa
     }
