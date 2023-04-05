@@ -1,16 +1,17 @@
 package lt.inga.pom.tests.demoqa;
 
 import lt.inga.pom.pages.demoqa.TextBoxPage;
+import lt.inga.pom.tests.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TextBoxTest {
+public class TextBoxTest extends TestBase {
 
-
-    @BeforeMethod  // paleidziamas pries kiekviena metoda
-    public void setUp() {   // pradzioj uzsikraus sitas metodas
+    @BeforeMethod
+    @Override
+    public void setUp() {
         TextBoxPage.open();
     }
 
@@ -45,12 +46,6 @@ public class TextBoxTest {
                 actualResult.contains(expectedResult),
                 String.format("Actual: %s; Expected: %s", actualResult, expectedResult)
         );
-    }
-
-    @AfterMethod   // uzdarymo metodas
-    public void tearDown() {
-        TextBoxPage.closeDriver();
-
     }
 
 

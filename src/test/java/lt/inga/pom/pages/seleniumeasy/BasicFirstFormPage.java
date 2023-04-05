@@ -2,7 +2,6 @@ package lt.inga.pom.pages.seleniumeasy;
 
 import lt.inga.pom.pages.Common;
 import lt.inga.pom.pages.Locators;
-import org.openqa.selenium.By;
 
 public class BasicFirstFormPage {
 
@@ -11,12 +10,7 @@ public class BasicFirstFormPage {
         Common.openUrl("http://demo.seleniumeasy.com/basic-first-form-demo.html");
     }
 
-    public static void closeDriver() {
-        Common.sleep(3000);
-        Common.closeDriver();
-    }
-
-    public static void enterMessage(String message) {
+       public static void enterMessage(String message) {
         Common.sendKeysToElement(
                 Locators.SeleniumEasy.BasicFirstForm.inputUserMessage,
                 message
@@ -34,8 +28,7 @@ public class BasicFirstFormPage {
     }
 
     public static void enterValueA(String value) {
-        Common.sendKeysToElement(Locators.SeleniumEasy.BasicFirstForm.inputValueA
-                ,
+        Common.sendKeysToElement(Locators.SeleniumEasy.BasicFirstForm.inputValueA,
                 value
         );
     }

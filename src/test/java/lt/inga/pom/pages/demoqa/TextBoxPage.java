@@ -9,11 +9,7 @@ public class TextBoxPage {
         Common.openUrl("https://demoqa.com/text-box");
     }
 
-    public static void closeDriver() {
-        Common.closeDriver();
-    }
-
-    public static void enterFullName(String text) {
+        public static void enterFullName(String text) {
         Common.sendKeysToElement(
                 Locators.Demoqa.TextBox.inputUserName,
                 text

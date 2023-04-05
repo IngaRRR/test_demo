@@ -1,16 +1,16 @@
 package lt.inga.pom.tests.seleniumeasy;
 
 import lt.inga.pom.pages.seleniumeasy.BasicFirstFormPage;
+import lt.inga.pom.tests.TestBase;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class BasicFirstFormTest {
+public class BasicFirstFormTest extends TestBase {
 
-    @BeforeMethod  // paleidziamas pries kiekviena metoda
-    public void setUp() {   // pradzioj uzsikraus sitas metodas
-
+    @BeforeMethod
+    @Override
+    public void setUp() {
         BasicFirstFormPage.open();
     }
 
@@ -24,6 +24,22 @@ public class BasicFirstFormTest {
         BasicFirstFormPage.enterMessage(message);
         BasicFirstFormPage.clickOnButtonShowMessage();
         actualResult = BasicFirstFormPage.readMessage();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testTwoInputFieldsPositive() {
+
+        String inputA = "10";
+        String inputB = "15";
+        String expectedResult = "25";
+        String actualResult;
+
+        BasicFirstFormPage.enterValueA(inputA);
+        BasicFirstFormPage.enterValueB(inputB);
+        BasicFirstFormPage.clickOnButtonGetTotal();
+        actualResult = BasicFirstFormPage.readMessageTotal();
 
         Assert.assertEquals(actualResult, expectedResult);
     }
@@ -44,9 +60,5 @@ public class BasicFirstFormTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-    @AfterMethod   // uzdarymo metodas
-    public void tearDown() {
-        BasicFirstFormPage.closeDriver();
-    }
 
 }
